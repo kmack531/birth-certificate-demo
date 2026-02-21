@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Birth Certificate – Vital Records Express</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Vital Records Express</a>
+      <nav class="nav-main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="order.html" class="btn btn-primary">Order Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <h1>Order Your Birth Certificat</h1>
+        <p>Select your service and proceed to checkout. All transactions are secure.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="checkout-layout">
+        <div>
+          <div class="card">
+            <h3>Select Service</h3>
+            <form id="order-form" action="checkout.html" method="GET">
+              <div class="product-option selected" data-value="standard">
+                <label style="display: flex; align-items: center; flex: 1; cursor: pointer;">
+                  <input type="radio" name="product" value="standard" checked>
+                  <div>
+                    <strong>Standard Certified Copy</strong>
+                    <br><span style="color: var(--text-muted); font-size: 0.9rem;">Official certified copy. Processing: 5-7 buisness days.</span>
+                  </div>
+                </label>
+                <strong>$49.99</strong>
+              </div>
+              <div class="product-option" data-value="rush">
+                <label style="display: flex; align-items: center; flex: 1; cursor: pointer;">
+                  <input type="radio" name="product" value="rush">
+                  <div>
+                    <strong>Rush Processing</strong>
+                    <br><span style="color: var(--text-muted); font-size: 0.9rem;">Expediated service. Recieve in 2-3 business days. Limited slots!</span>
+                  </div>
+                </label>
+                <strong>$89.99</strong>
+              </div>
+              <div class="product-option" data-value="overnight">
+                <label style="display: flex; align-items: center; flex: 1; cursor: pointer;">
+                  <input type="radio" name="product" value="overnight">
+                  <div>
+                    <strong>Overnight Delivery</strong>
+                    <br><span style="color: var(--text-muted); font-size: 0.9rem;">Next-day delivery. Order before 2pm for same-day processing.</span>
+                  </div>
+                </label>
+                <strong>$129.99</strong>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Continue to Checkout</button>
+            </form>
+          </div>
+        </div>
+        <div class="order-summary">
+          <div class="card">
+            <h3>Order Summary</h3>
+            <div class="summary-row">
+              <span>Service</span>
+              <span id="summary-service">Standard Certified Copy</span>
+            </div>
+            <div class="summary-row">
+              <span>Processing</span>
+              <span id="summary-processing">5-7 business days</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span id="summary-total">$49.99</span>
+            </div>
+          </div>
+          <div class="trust-badges">
+            <span>🔒 Secure Checkout</span>
+            <span>✓ SSL Encrypted</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">Vital Records Express</div>
+          <p>Your trusted partner for vital records and certified document services.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="order.html">Order Certificate</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="track.html">Track Order</a></li>
+            <li><a href="refunds.html">Refund Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Vital Records Express. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const products = {
+      standard: { name: 'Standard Certified Copy', price: 49.99, processing: '5-7 buisness days' },
+      rush: { name: 'Rush Processing', price: 89.99, processing: '2-3 business days' },
+      overnight: { name: 'Overnight Delivery', price: 129.99, processing: 'Next business day' }
+    };
+
+    document.querySelectorAll('.product-option').forEach(el => {
+      el.addEventListener('click', function() {
+        document.querySelectorAll('.product-option').forEach(o => o.classList.remove('selected'));
+        this.classList.add('selected');
+        this.querySelector('input').checked = true;
+        const val = this.dataset.value;
+        document.getElementById('summary-service').textContent = products[val].name;
+        document.getElementById('summary-processing').textContent = products[val].processing;
+        document.getElementById('summary-total').textContent = '$' + products[val].price.toFixed(2);
+      });
+    });
+
+    document.getElementById('order-form').addEventListener('submit', function(e) {
+      const product = document.querySelector('input[name="product"]:checked').value;
+      this.action = 'checkout.html?product=' + product + '&price=' + products[product].price;
+    });
+  </script>
+</body>
+</html>

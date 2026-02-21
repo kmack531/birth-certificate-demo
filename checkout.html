@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout – Vital Records Express</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Vital Records Express</a>
+      <nav class="nav-main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="order.html" class="btn btn-primary">Order Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <h1>Checkout</h1>
+        <p>Enter your information to complete your order. All fields required.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="steps">
+        <div class="step done">Order</div>
+        <div class="step active">Details &amp; Payment</div>
+        <div class="step">Confirmation</div>
+      </div>
+
+      <form id="checkout-form" action="confirmation.html" method="GET">
+        <input type="hidden" name="product" id="hid-product" value="">
+        <input type="hidden" name="price" id="hid-price" value="">
+        <input type="hidden" name="orderId" id="hid-orderId" value="">
+
+        <div class="checkout-layout">
+          <div>
+            <div class="card">
+              <h3>Personal Information</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="first">First Name *</label>
+                  <input type="text" id="first" name="firstName" required>
+                </div>
+                <div class="form-group">
+                  <label for="last">Last Name *</label>
+                  <input type="text" id="last" name="lastName" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
+              </div>
+              <div class="form-group">
+                <label for="dob">Date of Birth (as on certificate) *</label>
+                <input type="date" id="dob" name="dob" required>
+              </div>
+              <div class="form-group">
+                <label for="birthplace">Place of Birth (City, State) *</label>
+                <input type="text" id="birthplace" name="birthplace" placeholder="e.g. Los Angeles, CA" required>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Shipping Address</h3>
+              <div class="form-group">
+                <label for="address">Street Address *</label>
+                <input type="text" id="address" name="address" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">City *</label>
+                  <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                  <label for="state">State *</label>
+                  <input type="text" id="state" name="state" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="zip">ZIP Code *</label>
+                <input type="text" id="zip" name="zip" required>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Payment Information</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Your payment is secure and encrypted. We accept all major credit cards.</p>
+              <div class="form-group">
+                <label for="cardname">Name on Card *</label>
+                <input type="text" id="cardname" name="cardName" required>
+              </div>
+              <div class="form-group">
+                <label for="cardnum">Card Number *</label>
+                <input type="text" id="cardnum" name="cardNumber" placeholder="4111 1111 1111 1111" maxlength="19" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="expiry">Expiration Date *</label>
+                  <input type="text" id="expiry" name="expiry" placeholder="MM/YY" maxlength="5" required>
+                </div>
+                <div class="form-group">
+                  <label for="cvv">CVV *</label>
+                  <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                  <input type="checkbox" name="terms" required>
+                  I agree to the <a href="terms.html" target="_blank">Terms of Service</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>. I understand that processing may take up to 7 buisness days.
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">Place Order — <span id="btn-total">$0.00</span></button>
+          </div>
+
+          <div class="order-summary">
+            <div class="card">
+              <h3>Order Summary</h3>
+              <div class="summary-row">
+                <span id="sum-service">Standard Certified Copy</span>
+                <span id="sum-price">$49.99</span>
+              </div>
+              <div class="summary-row">
+                <span>Shipping</span>
+                <span>Included</span>
+              </div>
+              <div class="summary-row total">
+                <span>Total</span>
+                <span id="sum-total">$49.99</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 Vital Records Express. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const product = params.get('product') || 'standard';
+    const price = params.get('price') || '49.99';
+
+    const productNames = {
+      standard: 'Standard Certified Copy',
+      rush: 'Rush Processing',
+      overnight: 'Overnight Delivery'
+    };
+
+    document.getElementById('hid-product').value = product;
+    document.getElementById('hid-price').value = price;
+    document.getElementById('sum-service').textContent = productNames[product] || productNames.standard;
+    document.getElementById('sum-price').textContent = '$' + parseFloat(price).toFixed(2);
+    document.getElementById('sum-total').textContent = '$' + parseFloat(price).toFixed(2);
+    document.getElementById('btn-total').textContent = '$' + parseFloat(price).toFixed(2);
+
+    document.getElementById('checkout-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const orderId = 'VRE-' + Date.now();
+      document.getElementById('hid-orderId').value = orderId;
+      const url = 'confirmation.html?orderId=' + orderId + '&product=' + product + '&price=' + price;
+      window.location.href = url;
+    });
+  </script>
+</body>
+</html>

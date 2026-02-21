@@ -1,0 +1,4 @@
+# Netlify config for static site
+[build]
+  publish = "."
+  command = "echo 'No build step'"

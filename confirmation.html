@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed – Vital Records Express</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Vital Records Express</a>
+      <nav class="nav-main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="order.html" class="btn btn-primary">Order Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container" style="padding: 4rem 1.5rem;">
+      <div class="confirmation-box" style="max-width: 520px; margin: 0 auto;">
+        <div class="icon-success">✓</div>
+        <h2>Thank You For Your Order!</h2>
+        <p class="order-id">Order number: <strong id="conf-order-id">—</strong></p>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">We've recieved your order and will begin processing shortly. You will receive a confirmation email with tracking information within 24 hours.</p>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Estimated delivery: <strong id="conf-delivery">5-7 business days</strong></p>
+        <a href="track.html" class="btn btn-primary">Track Your Order</a>
+        <br><br>
+        <a href="index.html" class="btn btn-outline">Return to Home</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 Vital Records Express. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const orderId = params.get('orderId') || 'VRE-' + Date.now();
+    const product = params.get('product') || 'standard';
+    const delivery = { standard: '5-7 business days', rush: '2-3 business days', overnight: 'Next business day' };
+
+    document.getElementById('conf-order-id').textContent = orderId;
+    document.getElementById('conf-delivery').textContent = delivery[product] || delivery.standard;
+  </script>
+</body>
+</html>
